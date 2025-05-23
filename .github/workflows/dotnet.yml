@@ -29,10 +29,10 @@ jobs:
       uses: actions/setup-node@v4.0.2
     - name: Install packages
       run: npm install --force
-      working-directory: code/frontend/ta-web
+      working-directory: code/frontend/angular
     - name: Build
       run: npm run build
-      working-directory: code/frontend/ta-web
+      working-directory: code/frontend/angular
   frontend-react:
     runs-on: ubuntu-latest
     steps:
@@ -41,7 +41,7 @@ jobs:
       uses: actions/setup-node@v4.0.2
     - name: Install packages
       run: npm install --force
-      working-directory: code/frontend/ta-web-react
+      working-directory: code/frontend/react
     - name: Build
       run: npm run build
-      working-directory: code/frontend/ta-web-react
+      working-directory: code/frontend/react

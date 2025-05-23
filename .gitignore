@@ -530,3 +530,7 @@ dist
 package-lock.json
 .vscode/
 code/frontend/ta-web/.angular/
+.terraform/
+.terraform.lock.hcl
+*.tfstate.backup
+*.tfstate
