@@ -31,6 +31,36 @@ Extra design patterns, abstractions, or architectural changes are only beneficia
 - Angular 21
 - React 19
 
+## Scaffolding Overview
+
+### Scenarios (Tracks)
+
+Pick one of the following scenarios during the assessment:
+
+- Orders System
+- Products System
+- Support Tickets
+
+### Frontend (Angular)
+
+The Angular app includes placeholder routes and pages for each scenario:
+
+- `/orders`
+- `/products`
+- `/support-tickets`
+
+These pages are intentionally minimal and serve as starting points for the assessment.
+
+### Backend (.NET)
+
+The API includes placeholder controller endpoints for each scenario:
+
+- `api/orders`
+- `api/products`
+- `api/support-tickets`
+
+Request models are organized under `code/backend/TA-API/Models/Requests`.
+
 ## How to Build
 
 - Frontend (Angular)
