@@ -1,0 +1,24 @@
+<div class="detail-container">
+  <div *ngIf="loading" class="loading-message">Loading character...</div>
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+
+  <div *ngIf="character" class="card detail-card">
+    <div class="detail-header">
+      <h2>{{ character.name }}</h2>
+    </div>
+    <div class="detail-body">
+      <div class="image-wrap" *ngIf="character.image">
+        <img [src]="character.image" alt="{{ character.name }}" />
+      </div>
+      <div class="info">
+        <p><strong>Status:</strong> {{ character.status }}</p>
+        <p><strong>Species:</strong> {{ character.species }}</p>
+        <p><strong>Gender:</strong> {{ character.gender }}</p>
+        <p *ngIf="character.type"><strong>Type:</strong> {{ character.type }}</p>
+        <p *ngIf="character.originName"><strong>Origin:</strong> {{ character.originName }}</p>
+        <p *ngIf="character.locationName"><strong>Location:</strong> {{ character.locationName }}</p>
+        <p *ngIf="character.externalUrl"><strong>External URL:</strong> <a [href]="character.externalUrl" target="_blank">Open</a></p>
+      </div>
+    </div>
+  </div>
+</div>

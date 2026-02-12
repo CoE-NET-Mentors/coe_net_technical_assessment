@@ -1,0 +1,13 @@
+.detail-container { padding: 24px; max-width: 900px; margin: 0 auto; }
+.detail-card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.detail-header h2 { margin: 0 0 10px; }
+.detail-body { display: flex; gap: 20px; align-items: flex-start; }
+.image-wrap img { width: 260px; height: 260px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd; }
+.info p { margin: 8px 0; font-size: 1rem; }
+.error-message { color: #c62828; font-weight: 600; }
+.loading-message { color: #666; }
+
+@media (max-width: 720px) {
+  .detail-body { flex-direction: column; }
+  .image-wrap img { width: 100%; height: auto; }
+}

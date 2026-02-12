@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TA_API.Models.Data;
 
 namespace TA_API.Services.Data
 {
@@ -7,5 +8,7 @@ namespace TA_API.Services.Data
         public AssessmentDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<CharacterEntity> Characters { get; set; }
     }
 }

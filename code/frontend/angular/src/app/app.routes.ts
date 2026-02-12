@@ -8,6 +8,8 @@ import { SupportTicketsComponent } from './pages/support-tickets/support-tickets
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent  },
+    { path: 'characters/:id', loadComponent: () => import('./pages/character-detail/character-detail.component').then(m => m.CharacterDetailComponent) },
+    { path: 'characters/:id/edit', loadComponent: () => import('./pages/character-edit/character-edit.component').then(m => m.CharacterEditComponent) },
     { path: 'about', component: AboutComponent  },
     { path: 'orders', component: OrdersComponent },
     { path: 'products', component: ProductsComponent },

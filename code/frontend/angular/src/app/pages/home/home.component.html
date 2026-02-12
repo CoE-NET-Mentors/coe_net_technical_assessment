@@ -1,2 +1,126 @@
-<h3>Home page</h3>
-<p>Select the track for your assessment from the sidebar.</p>
+<div class="home-container">
+  <div class="header">
+    <h1>Rick and Morty Characters</h1>
+    <div class="header-buttons">
+      <button (click)="refreshCharacters()" class="refresh-btn">Refresh</button>
+      <button (click)="toggleCreateForm()" class="create-btn">
+        {{ showCreateForm ? 'Cancel' : 'Create New Character' }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="successMessage" class="success-message">
+    <p>✓ {{ successMessage }}</p>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Create Form -->
+  <div *ngIf="showCreateForm" class="form-container create-form">
+    <h2>Create New Character</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="create-name">Name *</label>
+        <input id="create-name" type="text" [(ngModel)]="newCharacter.name" placeholder="Character name">
+      </div>
+      <div class="form-group">
+        <label for="create-species">Species *</label>
+        <input id="create-species" type="text" [(ngModel)]="newCharacter.species" placeholder="Species">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="create-status">Status</label>
+        <select id="create-status" [(ngModel)]="newCharacter.status">
+          <option value="Alive">Alive</option>
+          <option value="Dead">Dead</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="create-gender">Gender</label>
+        <select id="create-gender" [(ngModel)]="newCharacter.gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Genderless">Genderless</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="create-type">Type</label>
+        <input id="create-type" type="text" [(ngModel)]="newCharacter.type" placeholder="Type">
+      </div>
+      <div class="form-group">
+        <label for="create-origin">Origin Name</label>
+        <input id="create-origin" type="text" [(ngModel)]="newCharacter.originName" placeholder="Origin name">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="create-location">Location Name</label>
+        <input id="create-location" type="text" [(ngModel)]="newCharacter.locationName" placeholder="Location name">
+      </div>
+      <div class="form-group">
+        <label for="create-image">Image URL</label>
+        <input id="create-image" type="text" [(ngModel)]="newCharacter.image" placeholder="Image URL">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="create-external-id">External ID</label>
+        <input id="create-external-id" type="number" [(ngModel)]="newCharacter.externalId" placeholder="External ID">
+      </div>
+      <div class="form-group">
+        <label for="create-external-url">External URL</label>
+        <input id="create-external-url" type="text" [(ngModel)]="newCharacter.externalUrl" placeholder="External URL">
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button (click)="createNewCharacter()" class="save-btn">Create Character</button>
+      <button (click)="toggleCreateForm()" class="cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="characters$ | async as characters">
+    <div class="characters-grid">
+      <div *ngFor="let character of characters" class="character-card">
+        <div class="card-header">
+          <h3>{{ character.name }}</h3>
+          <div class="card-buttons">
+            <button (click)="toggleUpdateForm(character)" class="edit-btn" title="Edit">✎</button>
+            <button (click)="deleteCharacter(character.id, character.name)" class="delete-btn" title="Delete">✕</button>
+          </div>
+        </div>
+
+        <!-- Inline edit removed: navigate to edit page instead -->
+
+        <!-- Character Details -->
+        <div class="card-content" (click)="openDetailInNewTab(character)" title="Open full details in new tab">
+          <!-- small thumbnail if image present -->
+          <div *ngIf="character.image" class="thumb-wrap">
+            <img [src]="character.image" alt="{{ character.name }}" class="thumb" />
+          </div>
+          <p><strong>Status:</strong> {{ character.status }}</p>
+          <p><strong>Species:</strong> {{ character.species }}</p>
+          <p><strong>Gender:</strong> {{ character.gender }}</p>
+          <p *ngIf="character.type"><strong>Type:</strong> {{ character.type }}</p>
+          <p *ngIf="character.originName"><strong>Origin:</strong> {{ character.originName }}</p>
+          <p *ngIf="character.locationName"><strong>Location:</strong> {{ character.locationName }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="characters.length === 0 && !error" class="no-characters">
+      <p>No characters found. Create some characters to display them here.</p>
+    </div>
+  </ng-container>
+</div>

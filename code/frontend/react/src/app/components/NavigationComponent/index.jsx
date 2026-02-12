@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router";
-const unosquarelogo = URL("../../../assets/unosquare.webp", import.meta.url);
+const unosquarelogo = new URL("../../../assets/unosquare.webp", import.meta.url);
 export function NavigationComponent() {
     const location = useLocation();
 
@@ -35,8 +35,8 @@ export function NavigationComponent() {
                             >
                                 About
                             </Link>
-                        </li>                       
-                            
+                        </li>
+
                         <li className="nav-item">
                             <a href="https://dev.azure.com/UnoquareCSharpCoE" rel="noreferrer" target="_blank" className="nav-link">🌐 Azure DevOps</a>
                         </li>
